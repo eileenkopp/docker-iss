@@ -61,11 +61,11 @@ def write_to_mongo(dtime, long, lat):
             logging.error("MONGOPASS environment variable is not set")
             exit(1)
             
-        connection_string = f'mongodb+srv://docker:{dbpass}@cluster0.m3fek.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+        connection_string = f'mongodb+srv://docker:{dbpass}@cluster0.m3fek.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tlsAllowInvalidCertificates=true'
         client = MongoClient(connection_string)
 
         # use your UVA computing ID for the database name
-        db = client['mst3k']
+        db = client['jjk2jy']
         collection = db['locations']
         collection.insert_one({'timestamp': dtime, 'longitude': long, 'latitude': lat})
         logger.info('Output written to MongoDB')
